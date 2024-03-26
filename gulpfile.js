@@ -1,6 +1,6 @@
 var gulp = require("gulp"),
     gutil = require("gulp-util"),
-    sass = require("gulp-sass"),
+    sass = require("gulp-dart-sass"),
     browserify = require("gulp-browserify"),
     livereload = require("gulp-livereload"),
     Config = require("./config.json"),
@@ -13,9 +13,7 @@ var gulp = require("gulp"),
 gulp.task("styles", function() {
   return gulp
     .src("styles/[^_]*.scss")
-    .pipe(
-      sass(config.sass).on("error", log_error)
-    )
+    .pipe(sass().on('error', sass.logError))
     .pipe(gulp.dest(config.directory))
     .pipe(livereload());
 });
