@@ -7,8 +7,9 @@ class Single extends Base {
       this._getImage()
     ];
 
-    $("<div/>", { class: "image" })
-      .css({ "background-image": `url('${this.images[0]}')` })
+    $("<img/>", { class: "picture" })
+      .attr("src", this.images[0])
+      .attr("loading", "lazy")
       .appendTo(this.$el);
   }
 }

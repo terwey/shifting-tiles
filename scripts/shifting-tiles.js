@@ -3,7 +3,6 @@
  */
 
 let $ = require("jquery"),
-    imageLoader = require("./services/ImageLoader"),
     imageList = require("./services/ImageList"),
     TileBuilder = require("./services/TileBuilder"),
     Animator = require("./services/Animator"),
@@ -48,7 +47,7 @@ class ShiftingTiles {
     this.$el
       .addClass("shifting-tiles")
       .html(this._loadingView());
-    $.when.apply($, this._preloadImages())
+    $.when.apply($, this._mapImages())
       .always(this._build.bind(this));
   }
 
@@ -130,12 +129,10 @@ class ShiftingTiles {
     this.height.total = this.$el.height();
   }
 
-  _preloadImages() {
+
+  _mapImages() {
     return this.imageUrls.map((imageUrl) => {
-      return imageLoader(imageUrl)
-        .then(() => {
-          imageList.add(imageUrl);
-        });
+      return imageList.add(imageUrl);
     });
   }
 

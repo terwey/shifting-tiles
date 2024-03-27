@@ -8,16 +8,16 @@ class DoubleHorizontal extends Base {
       this._getImage()
     ];
 
-    $("<div/>", { class: "image" })
-      .css({
-        "background-image": `url('${this.images[0]}')`,
-        height: "50%"
-      })
+    $("<img/>", { class: "picture" })
+      .attr("src", this.images[0])
+      .attr("loading", "lazy")
+      .css({ height: "50%" })
       .appendTo(this.$el);
 
-    $("<div/>", { class: "image" })
-      .css({
-        "background-image": `url('${this.images[1]}')`,
+    $("<img/>", { class: "picture" })
+      .attr("src", this.images[1])
+      .attr("loading", "lazy")
+      .css({ 
         height: "50%",
         top: "50%"
       })
