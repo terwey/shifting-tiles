@@ -2,7 +2,7 @@
  * Render a collection of Images
  */
 
-let $ = require("jquery"),
+let $ = require("jquery/dist/jquery.slim.js"),
     imageList = require("./services/ImageList"),
     TileBuilder = require("./services/TileBuilder"),
     Animator = require("./services/Animator"),

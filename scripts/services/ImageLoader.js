@@ -1,4 +1,4 @@
-let $ = require("jquery");
+let $ = require("jquery/dist/jquery.slim.js");
 
 module.exports = (url) => {
   let deferred = $.Deferred(),

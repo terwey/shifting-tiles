@@ -1,5 +1,5 @@
 let Base = require("./Base"),
-    $ = require("jquery");
+    $ = require("jquery/dist/jquery.slim.js");
 
 class Single extends Base {
   renderImages() {
