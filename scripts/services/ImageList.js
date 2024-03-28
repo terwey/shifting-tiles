@@ -15,6 +15,10 @@ class ImageList {
     ];
 
     if (!url) {
+      if (url === undefined) {
+        console.log("undefined URL");
+        throw new Error("No images available");
+      }
       return this.images[Math.floor(Math.random() * this.images.length)];
     }
 

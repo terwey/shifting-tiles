@@ -13,6 +13,10 @@ class ShiftingTiles {
   constructor(options) {
     options = options || {};
 
+    // ios bug
+    this.windowWidth = $(window).width();
+    this.windowHeight = $(window).height();
+
     this.$el = $(options.el);
     this.imageUrls = options.imageUrls || [];
 
@@ -36,8 +40,12 @@ class ShiftingTiles {
     });
 
     $(window).on("resize", (_event) => {
-      window.clearTimeout(this.resizeDebounce);
-      this.resizeDebounce = window.setTimeout(this._resized.bind(this), 100);
+      // ios bug, resize event fires on scroll
+      // this is correct because the viewport does change, but it trips up the rest of the codebase
+      if (($(window).width() != this.windowWidth) || ($(window).height() != this.windowHeight)) {
+        window.clearTimeout(this.resizeDebounce);
+        this.resizeDebounce = window.setTimeout(this._resized.bind(this), 100);
+      }
     });
 
     this.directions = new Directions({ $el: this.$el, width: this.width });
